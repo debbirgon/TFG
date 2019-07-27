@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">GymApp</string>
+    <string name="email">Email</string>
+    <string name="password">Contraseña</string>
+    <string name="login">Login</string>
+    <string name="registro">registro</string>
+    <string name="must_fill">Debe rellenar todos los campos</string>
+    <string name="email_not_verified">Email no verificado</string>
+    <string name="required">Campo requerido.</string>
+    <string name="weak_pass">La contraseña debe contener al menos 6 caracteres.</string>
+    <string name="invalid_email">Email no válido.</string>
+    <string name="error_user_exists">Este usuario ya existe</string>
+    <string name="surname">Apellidos</string>
+    <string name="name">Nombre</string>
+    <string name="not_registered"><u>¿Aún no tienes una cuenta? Regístrate.</u></string>
+    <string name="proffesional">Soy un profesional de la actividad física</string>
+
+</resources>
