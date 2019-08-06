@@ -1,9 +1,8 @@
 <resources>
     <string name="app_name">GymApp</string>
-    <string name="email">Email</string>
+    <string name="email">Correo electrónico</string>
     <string name="password">Contraseña</string>
-    <string name="login">Login</string>
-    <string name="registro">registro</string>
+    <string name="login">INICIAR SESIÓN</string>
     <string name="must_fill">Debe rellenar todos los campos</string>
     <string name="email_not_verified">Email no verificado</string>
     <string name="required">Campo requerido.</string>
@@ -14,5 +13,12 @@
     <string name="name">Nombre</string>
     <string name="not_registered"><u>¿Aún no tienes una cuenta? Regístrate.</u></string>
     <string name="proffesional">Soy un profesional de la actividad física</string>
+    <string name="accept">Aceptar</string>
+    <string name="signUp">Regístrate</string>
+    <string name="exercises">Ejercicios</string>
+    <string name="trainings">Entrenamientos</string>
+    <string name="favourites">Favoritos</string>
+    <string name="search">Buscar...</string>
+    <string name="no_matches">*No se encuentra ninguna coincidencia*</string>
 
 </resources>

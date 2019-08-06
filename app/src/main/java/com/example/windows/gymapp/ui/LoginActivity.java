@@ -97,8 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }else{
-                Toast.makeText(getApplicationContext(), getString(R.string.email_not_verified),
-                        Toast.LENGTH_SHORT).show();
+                et_email.setError(getString(R.string.email_not_verified));
             }
         }
     }

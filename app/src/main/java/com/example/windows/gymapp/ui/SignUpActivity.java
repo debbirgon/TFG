@@ -1,5 +1,6 @@
 package com.example.windows.gymapp.ui;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.windows.gymapp.R;
@@ -55,6 +57,15 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 user.setIsExpert(isChecked);
+            }
+        });
+
+        ImageView trampa = findViewById(R.id.trampa);
+        trampa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent fakeIntent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(fakeIntent);
             }
         });
 
