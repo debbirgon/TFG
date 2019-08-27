@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.windows.gymapp">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,15 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.LoginActivity">
+        <activity android:name=".ui.LoginActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.MainActivity" />
-        <activity android:name=".ui.SignUpActivity" />
+        <activity android:name=".ui.MainActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.SignUpActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.NewSectionActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.PhysicalActivityActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.NewPhacActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.ExplanationActivity" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

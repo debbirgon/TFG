@@ -48,6 +48,11 @@ public class User {
         this.surname = surname;
     }
 
+    public String getFullName(){
+        String fullName = this. name + " " + this.surname;
+        return fullName;
+    }
+
     public String getEmail() {
         return email;
     }

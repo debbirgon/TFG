@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.example.windows.gymapp.ui.NewSectionActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/ic_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_back"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingRight="14dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_section"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@android:color/white"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:text="@string/new_section_name"
+            android:inputType="textCapSentences"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/name"
+            android:inputType="text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:text="@string/kind"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"/>
+
+        <RadioGroup
+            android:id="@+id/rg_section_kind"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rb_exercises"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/exercises"/>
+
+            <RadioButton
+                android:id="@+id/rb_trainings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/trainings"/>
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btn_add_section"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/colorPrimary"
+            android:paddingHorizontal="50dp"
+            android:text="@string/accept"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

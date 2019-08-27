@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/ll_activity"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="@dimen/activity_vertical_margin"
+    android:orientation="horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_activity_name"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+
+
+    <TextView
+        android:id="@+id/tv_creator_name"
+        android:layout_width="wrap_content"
+        android:textColor="@android:color/darker_gray"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_activity_rating"
+        android:layout_width="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_gravity="bottom"
+        android:layout_height="wrap_content"
+        />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:layout_gravity="bottom"
+        app:srcCompat="@drawable/ic_star_green"/>
+
+
+</LinearLayout>

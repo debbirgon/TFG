@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.windows.gymapp.R;
-import com.example.windows.gymapp.firebase.Database;
+import com.example.windows.gymapp.data.FirebaseDb;
 import com.example.windows.gymapp.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -34,7 +34,7 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText et_surname;
     private User user;
     private CheckBox cb_pro;
-    private Database database;
+    private FirebaseDb firebaseDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         user = new User();
         mAuth = FirebaseAuth.getInstance();
-        database = new Database();
+        firebaseDb = new FirebaseDb(this);
         btn_register = findViewById(R.id.btn_register);
         et_email = findViewById(R.id.et_email);
         et_password = findViewById(R.id.et_password);
@@ -99,7 +99,7 @@ public class SignUpActivity extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(),
                                                 "Debe verificar la dirección email, le enviaremos un correo",
                                                 Toast.LENGTH_SHORT).show();
-                                        database.postUser(user);
+                                        firebaseDb.postUser(user);
                                         onBackPressed();
                                     }else{
                                         try{

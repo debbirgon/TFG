@@ -29,11 +29,13 @@
             android:textColor="@android:color/white"/>
 
         <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/add_exercise"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/ic_add"
             android:layout_gravity="end"
             android:padding="10dp"
+            android:visibility="gone"
             android:layout_marginRight="6dp"
             />
 
@@ -64,11 +66,11 @@
 
     </LinearLayout>
 
-    <com.srx.widget.PullToLoadView
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/pullToLoadExercise"
+        android:id="@+id/rv_exercise"
         android:scrollbars="vertical">
-    </com.srx.widget.PullToLoadView>
+    </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>

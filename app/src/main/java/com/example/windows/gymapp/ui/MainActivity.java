@@ -1,5 +1,6 @@
 package com.example.windows.gymapp.ui;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.windows.gymapp.R;
+import com.example.windows.gymapp.data.StorageSP;
+import com.example.windows.gymapp.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,6 +21,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        StorageSP storage = new StorageSP(this);
+        User user = storage.getUser();
+        if(user==null){
+            storage.deleteStorage();
+            startActivity(new Intent(this,LoginActivity.class));
+        }
+
 
         bottomNav = findViewById(R.id.bottom_navigation);
 

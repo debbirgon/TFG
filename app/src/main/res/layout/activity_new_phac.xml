@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.example.windows.gymapp.ui.NewPhacActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/ic_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_back"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingRight="14dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_activity"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@android:color/white"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/et_activity_name"
+                    android:inputType="textCapWords"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginVertical="@dimen/activity_vertical_margin"
+                    android:hint="@string/new_activity_name"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/et_activity_url"
+                    android:inputType="textUri"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginVertical="@dimen/activity_vertical_margin"
+                    android:hint="@string/new_activity_url"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginVertical="@dimen/activity_vertical_margin"
+                android:text="@string/comments_instructions"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:id="@+id/et_activity_comments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxHeight="200dp"
+                android:inputType="textMultiLine|textCapSentences"
+                android:gravity="top|left"/>
+
+
+
+            <Button
+                android:id="@+id/btn_add_activity"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_marginVertical="@dimen/activity_vertical_margin"
+                android:layout_gravity="bottom|center_horizontal"
+                android:background="@color/colorPrimary"
+                android:paddingHorizontal="50dp"
+                android:text="@string/accept"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

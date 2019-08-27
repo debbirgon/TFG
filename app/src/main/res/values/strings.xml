@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GymApp</string>
+    <string name="app_name" translatable="false">GymApp</string>
     <string name="email">Correo electrónico</string>
     <string name="password">Contraseña</string>
     <string name="login">INICIAR SESIÓN</string>
@@ -20,5 +20,16 @@
     <string name="favourites">Favoritos</string>
     <string name="search">Buscar...</string>
     <string name="no_matches">*No se encuentra ninguna coincidencia*</string>
+    <string name="add_section">Añadir nueva sección</string>
+    <string name="new_section_name">Nombre de la nueva sección</string>
+    <string name="kind">Seleccione el tipo de sección</string>
+    <string name="add_activity">Añadir actividad</string>
+    <string name="new_activity_name">Nombre de la actividad</string>
+    <string name="new_activity_url">Url del vídeo (Youtube)</string>
+    <string name="comments_instructions">Notas, comentarios e instrucciones sobre la actividad</string>
+    <string name="rate">Valora la explicación</string>
+    <string name="accept_rate">Valorar</string>
+    <string name="must_youtube">El enlace debe ser de Youtube</string>
+    <string name="not_playlist">No se admiten enlaces de listas de reproducción</string>
 
 </resources>

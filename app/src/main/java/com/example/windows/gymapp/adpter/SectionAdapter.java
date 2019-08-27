@@ -1,6 +1,7 @@
 package com.example.windows.gymapp.adpter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.windows.gymapp.R;
+import com.example.windows.gymapp.model.Section;
+import com.example.windows.gymapp.ui.PhysicalActivityActivity;
+import com.example.windows.gymapp.util.Constants;
 
 import java.util.List;
 
@@ -19,12 +23,14 @@ import java.util.List;
 
 public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.SectionHolder> {
 
-    private List<String> sectionList;
+    private List<Section> sectionList;
     private Context mContext;
+    private Boolean fromExercise;
 
-    public SectionAdapter(List<String> sectionList, Context mContext){
+    public SectionAdapter(List<Section> sectionList, Context mContext, Boolean fromExercise){
         this.sectionList = sectionList;
         this.mContext = mContext;
+        this.fromExercise = fromExercise;
     }
 
     @Override
@@ -42,11 +48,15 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.SectionH
         }else{
             holder.ll_section.setBackgroundColor(mContext.getResources().getColor(R.color.colorRow2));
         }
-        holder.tv_section_name.setText(sectionList.get(position));
+        holder.tv_section_name.setText(sectionList.get(position).getName());
         holder.ll_section.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mContext,"Click en posición: "+position,Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext.getApplicationContext(), PhysicalActivityActivity.class);
+                intent.putExtra(Constants.SECTION, sectionList.get(position));
+                intent.putExtra(Constants.FROM_EXERCISE, fromExercise);
+                mContext.startActivity(intent);
+
             }
         });
 
@@ -57,7 +67,7 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.SectionH
         return sectionList.size();
     }
 
-    public void filterList(List<String> filteredList) {
+    public void filterList(List<Section> filteredList) {
         if(filteredList.size()!=0){
             sectionList = filteredList;
             notifyDataSetChanged();

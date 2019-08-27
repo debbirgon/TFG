@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.example.windows.gymapp.ui.ExplanationActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/ic_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_back"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingRight="14dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_activity_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@android:color/white"/>
+
+        <CheckBox
+            android:id="@+id/cb_isFavourite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/selector_favourite"
+            android:layout_gravity="end"
+            android:padding="10dp"
+            />
+
+    </android.support.v7.widget.Toolbar>
+
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:id="@+id/yv_video"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </com.google.android.youtube.player.YouTubePlayerView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv_explanation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:layout_marginHorizontal="4dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:text="ejemplo"
+            android:minLines="2" />
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/rate"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold" />
+
+
+        <RatingBar
+            android:id="@+id/rb_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:isIndicator="false"
+            android:layout_marginVertical="4dp"
+            android:outlineProvider="bounds"
+            style="@style/Base.Widget.AppCompat.RatingBar.Indicator"
+            android:layout_gravity="center"
+            android:stepSize="1"/>
+
+
+
+        <Button
+            android:id="@+id/btn_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:background="@color/colorPrimary"
+            android:paddingHorizontal="50dp"
+            android:text="@string/accept_rate"
+            android:textColor="@android:color/white" />
+
+
+    </LinearLayout>
+
+</LinearLayout>
