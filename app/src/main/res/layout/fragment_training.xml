@@ -7,39 +7,7 @@
     android:focusableInTouchMode="true"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary">
 
-        <android.support.v7.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_menu"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:paddingRight="14dp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="@android:color/white"/>
-
-        <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/add_training"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_add"
-            android:layout_gravity="end"
-            android:visibility="gone"
-            android:padding="10dp"
-            android:layout_marginRight="6dp"
-            />
-
-    </android.support.v7.widget.Toolbar>
 
     <LinearLayout
         android:layout_width="match_parent"

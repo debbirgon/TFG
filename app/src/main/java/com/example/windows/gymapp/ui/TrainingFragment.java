@@ -38,7 +38,6 @@ public class TrainingFragment extends Fragment {
     private SectionAdapter sectionAdapter;
     private View rootView;
     private EditText et_search_training;
-    private AppCompatImageView add_training;
     private DatabaseReference trainingRef;
     @Nullable
     @Override
@@ -47,16 +46,8 @@ public class TrainingFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_training,container,false);
         rv_training = rootView.findViewById(R.id.rv_training);
         et_search_training = rootView.findViewById(R.id.et_search_training);
-        add_training = rootView.findViewById(R.id.add_training);
         FirebaseDatabase myDb = FirebaseDatabase.getInstance();
         trainingRef = myDb.getReference(Constants.TRAININGS);
-
-        StorageSP storage = new StorageSP(getContext());
-        User user = storage.getUser();
-
-        if(user.getIsExpert()){
-            add_training.setVisibility(View.VISIBLE);
-        }
 
         updateList();
         buildRecyclerView();
@@ -72,14 +63,6 @@ public class TrainingFragment extends Fragment {
             }
         });
 
-        add_training.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(),NewSectionActivity.class);
-                intent.putExtra(Constants.FROM_EXERCISE,false);
-                startActivity(intent);
-            }
-        });
 
         return rootView;
     }

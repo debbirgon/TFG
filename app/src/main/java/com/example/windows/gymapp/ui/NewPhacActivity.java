@@ -9,8 +9,10 @@ import android.widget.EditText;
 
 import com.example.windows.gymapp.R;
 import com.example.windows.gymapp.data.FirebaseDb;
+import com.example.windows.gymapp.data.StorageSP;
 import com.example.windows.gymapp.model.Activity;
 import com.example.windows.gymapp.model.Section;
+import com.example.windows.gymapp.model.User;
 import com.example.windows.gymapp.util.Constants;
 
 public class NewPhacActivity extends AppCompatActivity {
@@ -69,7 +71,8 @@ public class NewPhacActivity extends AppCompatActivity {
                     }else if(activityUrl.contains(".be/")){
                         realUrl = activityUrl.split("/")[3];
                     }
-                    Activity activity = new Activity(activityName,realUrl,comments,"Deb Deb");
+                    User user = new StorageSP(getApplicationContext()).getUser();
+                    Activity activity = new Activity(activityName,realUrl,comments,user.getFullName());
 
                     activity.addRating("init",0);
                     activity.setFromExercises(fromExercise);

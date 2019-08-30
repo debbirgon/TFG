@@ -31,5 +31,25 @@
     <string name="accept_rate">Valorar</string>
     <string name="must_youtube">El enlace debe ser de Youtube</string>
     <string name="not_playlist">No se admiten enlaces de listas de reproducción</string>
+    <string name="home">Inicio</string>
+    <string name="galery">Mi galería</string>
+    <string name="logout">Cerrar Sesión</string>
+    <string name="view_profile">Ver perfil</string>
+    <string name="add_photo">Subir foto</string>
+    <string name="choose_photo">Elegir archivo</string>
+    <string name="onFaiulre">Ha habido un error.</string>
+    <string name="upload_successful">Se ha subido la imagen con éxito</string>
+    <string name="upload_in_progress">Ya se está subiendo un archivo</string>
+    <string name="view_image">Ver imagen</string>
+    <string name="profile">Mi perfil</string>
+    <string name="full_name">Nombre y apellidos</string>
+    <string name="isProfesional">¿Profesional de la actividad física?</string>
+    <string name="change_pass">Cambiar contraseña</string>
+    <string name="old_pass">Indroduzca la contraseña actual</string>
+    <string name="new_pass">Introduzca la nueva contraseña</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
+    <string name="wrong_password">Contraseña incorrecta</string>
+    <string name="password_update_succeded">Cambiado correctamente. Vuelva a iniciar sesión con la nueva contraseña</string>
 
 </resources>

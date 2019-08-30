@@ -1,21 +1,28 @@
 package com.example.windows.gymapp.ui;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.windows.gymapp.R;
 import com.example.windows.gymapp.adpter.ActivityAdapter;
 import com.example.windows.gymapp.data.FirebaseDb;
+import com.example.windows.gymapp.data.StorageSP;
 import com.example.windows.gymapp.model.Activity;
 import com.example.windows.gymapp.util.Constants;
 import com.google.firebase.database.DataSnapshot;
@@ -72,6 +79,8 @@ public class FavouriteFragment extends Fragment {
 
         return rootView;
     }
+
+
 
     private void filter(String text) {
         List<Activity> filteredList = new ArrayList<>();

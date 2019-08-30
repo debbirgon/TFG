@@ -1,10 +1,12 @@
 package com.example.windows.gymapp.model;
 
+import java.io.Serializable;
+
 /**
  * Created by windows on 26/11/2018.
  */
 
-public class User {
+public class User implements Serializable{
     private String id;
     private String name;
     private String surname;

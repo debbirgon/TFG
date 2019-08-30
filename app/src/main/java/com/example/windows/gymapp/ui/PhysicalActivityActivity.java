@@ -52,9 +52,7 @@ public class PhysicalActivityActivity extends AppCompatActivity {
         StorageSP storage = new StorageSP(this);
         User user = storage.getUser();
 
-        if(user.getIsExpert()){
-            add_activity.setVisibility(View.VISIBLE);
-        }
+
 
         FirebaseDatabase myDb = FirebaseDatabase.getInstance();
         if(fromExercise){
@@ -72,6 +70,10 @@ public class PhysicalActivityActivity extends AppCompatActivity {
 
         updateList();
         buildRecyclerView();
+
+        if(user.getIsExpert()){
+            add_activity.setVisibility(View.VISIBLE);
+        }
 
         tv_section_name.setText(mySection.getName());
 

@@ -38,7 +38,6 @@ public class ExerciseFragment extends Fragment {
     private SectionAdapter sectionAdapter;
     private View rootView;
     private EditText et_search_exercise;
-    private AppCompatImageView add_exercise;
     private DatabaseReference exerciseRef;
     @Nullable
     @Override
@@ -47,16 +46,9 @@ public class ExerciseFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_exercise,container,false);
         rv_exercise = rootView.findViewById(R.id.rv_exercise);
         et_search_exercise = rootView.findViewById(R.id.et_search_exercise);
-        add_exercise = rootView.findViewById(R.id.add_exercise);
         FirebaseDatabase myDb = FirebaseDatabase.getInstance();
         exerciseRef = myDb.getReference(Constants.EXERCISES);
 
-        StorageSP storage = new StorageSP(getContext());
-        User user = storage.getUser();
-
-        if(user.getIsExpert()){
-            add_exercise.setVisibility(View.VISIBLE);
-        }
 
         updateList();
         buildRecyclerView();
@@ -69,15 +61,6 @@ public class ExerciseFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable editable) {
                 filter(editable.toString());
-            }
-        });
-
-        add_exercise.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(),NewSectionActivity.class);
-                intent.putExtra(Constants.FROM_EXERCISE,true);
-                startActivity(intent);
             }
         });
 

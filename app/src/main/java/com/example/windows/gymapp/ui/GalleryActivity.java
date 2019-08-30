@@ -2,12 +2,13 @@ package com.example.windows.gymapp.ui;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatImageView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -15,78 +16,61 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.windows.gymapp.R;
+import com.example.windows.gymapp.adpter.GalleryAdapter;
 import com.example.windows.gymapp.data.StorageSP;
+import com.example.windows.gymapp.model.Image;
 import com.example.windows.gymapp.model.User;
 import com.example.windows.gymapp.util.Constants;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
 
-    private BottomNavigationView bottomNav;
-    private AppCompatImageView ic_menu;
-    private AppCompatImageView ic_add;
+public class GalleryActivity extends AppCompatActivity {
+
+    private AppCompatImageView ic_menu, ic_add_photo;
     private NavigationView menu_view;
     private User user;
     private TextView tv_user_name;
     private TextView tv_user_surname;
     private LinearLayout ll_profile;
-
+    private RecyclerView rv_gallery;
+    private GalleryAdapter myAdapter;
+    private DatabaseReference imageRef;
+    private List<Image> imageList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        StorageSP storage = new StorageSP(this);
-        user = storage.getUser();
-        if(user==null){
-            storage.deleteStorage();
-            FirebaseAuth.getInstance().signOut();
-            startActivity(new Intent(this,LoginActivity.class));
-        }
+        setContentView(R.layout.activity_gallery);
 
         menu_view = findViewById(R.id.menu_view);
         ic_menu = findViewById(R.id.ic_menu);
-        ic_add = findViewById(R.id.ic_add);
-        bottomNav = findViewById(R.id.bottom_navigation);
         View headerView = menu_view.getHeaderView(0);
         tv_user_name = headerView.findViewById(R.id.tv_user_name);
         tv_user_surname = headerView.findViewById(R.id.tv_user_surname);
         ll_profile = headerView.findViewById(R.id.ll_profile);
+        ic_add_photo = findViewById(R.id.ic_add_photo);
+        rv_gallery = findViewById(R.id.rv_gallery);
+
+        StorageSP storage = new StorageSP(this);
+        user = storage.getUser();
+
+        imageList = new ArrayList<>();
+        imageRef = FirebaseDatabase.getInstance().getReference(Constants.IMAGES).child(user.getId());
 
         tv_user_name.setText(user.getName());
         tv_user_surname.setText(user.getSurname());
-        
-
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.tab_fragment_container,new ExerciseFragment()).commit();
-
 
         handleMenu();
-        updateView(true);
-        bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment selectedFragment = null;
-                switch (item.getItemId()){
-                    case R.id.nav_exercise:
-                        selectedFragment = new ExerciseFragment();
-                        break;
-                    case R.id.navi_training:
-                        selectedFragment = new TrainingFragment();
-                        break;
-                    case R.id.nav_favourite:
-                        selectedFragment = new FavouriteFragment();
-                        break;
+        updateList();
+        buildRecyclerView();
 
-                }
-                updateView(selectedFragment);
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.tab_fragment_container,selectedFragment).commit();
-                return true;
-            }
-        });
-        
         ll_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,33 +80,67 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ic_add.setOnClickListener(new View.OnClickListener() {
+        ic_add_photo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.tab_fragment_container);
-                Boolean fromExercise;
-                if(currentFragment instanceof ExerciseFragment){
-                    fromExercise= true;
-                }else{
-                    fromExercise=false;
-                }
-                Intent intent = new Intent(getApplicationContext(),NewSectionActivity.class);
-                intent.putExtra(Constants.FROM_EXERCISE,fromExercise);
+                Intent intent = new Intent(getApplicationContext(), AddPhotoActivity.class);
                 startActivity(intent);
             }
         });
+    }
 
+    private void updateList() {
+        imageRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                imageList.add(dataSnapshot.getValue(Image.class));
+                myAdapter.notifyDataSetChanged();
+            }
 
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                String idDelete = dataSnapshot.getValue(Image.class).getName();
+                for(int i =0; i<imageList.size(); i++){
+                    if(imageList.get(i).getName().equals(idDelete)) {
+                        imageList.remove(i);
+                    }
+                }
+                myAdapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void buildRecyclerView() {
+
+        rv_gallery.setHasFixedSize(true);
+        rv_gallery.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        myAdapter = new GalleryAdapter(imageList,getApplicationContext());
+        rv_gallery.setAdapter(myAdapter);
     }
 
     private void handleMenu() {
         ic_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(menu_view.getVisibility()==View.GONE){
+                if (menu_view.getVisibility() == View.GONE) {
                     openMenu();
-                }else{
+                } else {
                     closeMenu();
                 }
             }
@@ -131,18 +149,17 @@ public class MainActivity extends AppCompatActivity {
         menu_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.nav_home:
-                        closeMenu();
+                        finish();
                         break;
                     case R.id.nav_login:
                         new StorageSP(getApplicationContext()).deleteStorage();
                         FirebaseAuth.getInstance().signOut();
-                        startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                         finishAffinity();
                         break;
                     case R.id.nav_gallery:
-                        startActivity(new Intent(getApplicationContext(),GalleryActivity.class));
                         closeMenu();
                         break;
                 }
@@ -159,25 +176,6 @@ public class MainActivity extends AppCompatActivity {
     private void openMenu() {
         ic_menu.setImageDrawable(getResources().getDrawable(R.drawable.ic_back));
         menu_view.setVisibility(View.VISIBLE);
-    }
-
-    private void updateView(boolean b) {
-        if(user.getIsExpert()) {
-            ic_add.setVisibility(View.VISIBLE);
-        }
-    }
-
-    private void updateView(Fragment currentFragment) {
-
-        if(currentFragment instanceof FavouriteFragment){
-            ic_add.setVisibility(View.GONE);
-        }else if(user.getIsExpert()){
-            ic_add.setVisibility(View.VISIBLE);
-        }else{
-            ic_add.setVisibility(View.GONE);
-        }
-
-
     }
 
     @Override

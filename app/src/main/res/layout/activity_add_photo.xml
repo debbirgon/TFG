@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.example.windows.gymapp.ui.AddPhotoActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/ic_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_back"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingRight="14dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_photo"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@android:color/white"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginVertical="@dimen/activity_vertical_margin"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+        android:orientation="vertical">
+
+
+        <Button
+            android:id="@+id/btn_choose"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/colorPrimary"
+            android:paddingHorizontal="10dp"
+            android:text="@string/choose_photo"
+            android:textColor="@android:color/white"/>
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/iv_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"/>
+
+        <android.support.v4.widget.ContentLoadingProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="match_parent"
+            android:visibility="invisible"
+            android:layout_height="wrap_content"
+            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"/>
+
+        <Button
+            android:id="@+id/btn_add_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:visibility="invisible"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:background="@color/colorPrimary"
+            android:paddingHorizontal="50dp"
+            android:text="@string/accept"
+            android:textColor="@android:color/white" />
+
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
