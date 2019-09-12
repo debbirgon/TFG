@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content">
                 <EditText
                     android:id="@+id/et_activity_name"
-                    android:inputType="textCapWords"
+                    android:inputType="textCapSentences"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
