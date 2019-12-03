@@ -48,12 +48,12 @@ public class FirebaseDb {
         trainingReference.child(id).setValue(section).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast.makeText(mContext,"yay!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext,"Sección Añadida", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(mContext,"not working!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext,"Ha habido un error", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -68,12 +68,12 @@ public class FirebaseDb {
         exerciseReference.child(id).setValue(section).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast.makeText(mContext,"yay!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext,"Sección añadida correctamente", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(mContext,"not working!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext,"Ha habido un error", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -96,12 +96,12 @@ public class FirebaseDb {
         sectionReference.child(activity.getId()).setValue(activity).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast.makeText(mContext,"yay!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext,"Actividad creada correctamente", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(mContext,"not working!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext,"Ha habido un error", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -113,12 +113,12 @@ public class FirebaseDb {
         activityReference.child(activity.getId()).setValue(activity).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast.makeText(mContext,"yay!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext,"Actividad añadida correctamente!", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(mContext,"not working!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext,"Ha habido un error!", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -130,12 +130,12 @@ public class FirebaseDb {
         favouritesReference.setValue(favouriteList).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast.makeText(mContext,"yay!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext,"Lista de favoritos actualizada!", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(mContext,"not working!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext,"Ha habido un error!", Toast.LENGTH_SHORT).show();
             }
         });
     }

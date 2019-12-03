@@ -101,6 +101,12 @@ public class Activity implements Serializable{
         if(ratingList.size()!=0 && ratingList.get(0).getUserId().equals("init")){
             ratingList.remove(0);
         }
+        /*for(int i=0; i<ratingList.size(); i++){
+            if(ratingList.get(i).getUserId().equals(userId)){
+                ratingList.remove(i);
+                found = true;
+            }
+        }*/
         for(Rating rating: ratingList){
             if(rating.getUserId().equals(userId)){
                 ratingList.remove(rating);
